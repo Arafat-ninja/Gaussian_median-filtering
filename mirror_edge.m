@@ -1,0 +1,13 @@
+function e=mirror_edge(n,x)
+[height,width]=size(x);
+a1=x(1:n-1,:);        %把x中的前n-1列取出来
+a2=x(height-n+2:height,:);  %把x中后n-1列取出来
+b1=flipud(a1);     %  对取出来的进行上下镜像
+b2=flipud(a2);
+y1=[b1;x;b2];      %对镜像后的进行拼接到x上下
+a3=y1(:,1:n-1);        %把y1中前n-1列取出来
+a4=y1(:,width-n+2:width);   %把y1中后n-1列取出来
+b3=fliplr(a3);          %  对取出来的进行左右镜像
+b4=fliplr(a4);
+y2=[b3,y1,b4];      %对镜像后的进行拼接到y1左右
+e=y2;
